@@ -15,6 +15,35 @@ const BoardList = ({ boards, selectedBoard, onSelectBoard }) =>{
     );
 };
 
+BoardList.propTypes = {
+    boards: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            title: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired,
+            cards: PropTypes.arrayOf(
+                PropTypes.shape({
+                    id: PropTypes.number.isRequired,
+                    message: PropTypes.string.isRequired,
+                    likes: PropTypes.number,
+                })
+            ).isRequired,
+        })
+    ).isRequired,
+    selectedBoard: PropTypes.shape({
+        id: PropTypes.number,
+        title: PropTypes.string,
+        name: PropTypes.string,
+        cards: PropTypes.arrayOf(
+            PropTypes.shape({
+                id: PropTypes.number,
+                message: PropTypes.string,
+                likes: PropTypes.number,
+            })
+        ),
+    }),
+    onSelectBoard: PropTypes.func.isRequired,
+};
 
 
 export default BoardList;

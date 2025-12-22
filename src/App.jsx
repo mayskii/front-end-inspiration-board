@@ -16,8 +16,20 @@ const BOARDS = [
 ];
 
 function App() {
+  const [boards, setBoards] = useState(BOARDS);
   const [selectedBoard, setSelectedBoard] = useState(null);
 
+  const addBoard = (newBoard) => {
+    setBoards(prev => [...prev, newBoard])
+  }
+
+  const deleteBoard = (boardId) => {
+    setBoards(prev => prev.filter(board => board.id !== boardId));
+
+    if(selectedBoard?.id === boardId) {
+      setSelectedBoard(null);
+    }
+  }
 
   return (
     <div>
@@ -26,9 +38,10 @@ function App() {
       <div className='boards-container'>
         <section className='board-list-wrapper'>
           <BoardList 
-          boards={BOARDS}
+          boards={boards}
           selectedBoard={selectedBoard}
           onSelectBoard={setSelectedBoard}
+          onDeleteBoard={deleteBoard}
           />
         </section>
 
@@ -47,7 +60,7 @@ function App() {
       </div>
 
 
-      <NewBoardForm />
+      <NewBoardForm onAddBoard={addBoard}/>
     </div>
   )
 }

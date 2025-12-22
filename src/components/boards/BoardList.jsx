@@ -1,7 +1,7 @@
 import Board from './Board';
 import PropTypes from 'prop-types';
 
-const BoardList = ({ boards, selectedBoard, onSelectBoard }) =>{
+const BoardList = ({ boards, selectedBoard, onSelectBoard, onDeleteBoard }) =>{
     return (
         <ol>
             {boards.map(board => (
@@ -9,7 +9,9 @@ const BoardList = ({ boards, selectedBoard, onSelectBoard }) =>{
                     key={board.id}
                     board={board}
                     isSelected={selectedBoard?.id === board.id}
-                    onSelect={onSelectBoard}/>
+                    onSelect={onSelectBoard}
+                    onDelete={onDeleteBoard}
+                    />
             ))}
         </ol>
     );
@@ -43,6 +45,7 @@ BoardList.propTypes = {
         ),
     }),
     onSelectBoard: PropTypes.func.isRequired,
+    onDeleteBoard: PropTypes.func.isRequired,
 };
 
 

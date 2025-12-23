@@ -17,19 +17,3 @@
 .selected-board-wrapper {
   flex: 1;
 }
-
-.board-item {
-  cursor: pointer;
-  border: 1px solid lightgray;
-  padding: 8px;
-  list-style: none;
-}
-
-.board-item.selected {
-  border: 2px solid rgb(249, 2, 2);
-  font-weight: bold;
-}
-
-.form-fields.hidden {
-  display: none;
-}

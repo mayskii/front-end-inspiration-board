@@ -1,5 +1,6 @@
 import Board from './Board';
 import PropTypes from 'prop-types';
+import './Boards.css'
 
 const BoardList = ({ boards, selectedBoard, onSelectBoard, onDeleteBoard }) =>{
     return (

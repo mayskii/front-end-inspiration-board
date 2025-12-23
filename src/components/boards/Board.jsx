@@ -1,12 +1,24 @@
 import PropTypes from 'prop-types';
+import './Boards.css'
 
-const Board = ({ board, isSelected, onSelect }) =>{
+const Board = ({ board, isSelected, onSelect, onDelete }) =>{
     return (
         <li className={`board-item ${isSelected ? 'selected' : ''}`}
             onClick={() => onSelect(board)}
         >
-            <h3>{board.title}</h3>
-            <p>{board.name}</p>
+            <div className="board-item-content">
+                <h3 className="board-title">{board.title}</h3>
+                <p className="board-owner">{board.name}</p>
+            </div>
+            
+            <button 
+                onClick={(e) => { 
+                    e.stopPropagation();
+                    onDelete(board.id);
+                }}
+            > 
+            Delete
+            </button>
         </li>
     )
 }
@@ -26,6 +38,7 @@ Board.propTypes = {
     }).isRequired,
     isSelected: PropTypes.bool.isRequired,
     onSelect: PropTypes.func.isRequired,
+    onDelete: PropTypes.func.isRequired,
 };
 
 

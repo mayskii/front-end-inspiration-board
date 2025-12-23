@@ -1,9 +1,68 @@
-const NewBoardForm = () =>{
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import './Boards.css'
+
+const NewBoardForm = ({ onAddBoard }) =>{
+    const [ title, setTitle ] = useState('');
+    const [name, setName] = useState('');
+    const [showFields, setShowFields] = useState(true);
+
+    const handlesubmit = (e) => {
+        e.preventDefault();
+
+        if (!title.trim() || !name.trim()) return;
+
+        const newBoard = {
+            id: Date.now(),
+            title,
+            name,
+            cards: [],
+        };
+
+        onAddBoard(newBoard);
+        setTitle('');
+        setName('');
+    };
+
+    const toggleFields = () => setShowFields(prev => !prev);
+
     return (
-        <>
-        <h2>NewBoardForm</h2>
-        </>
+        <form onSubmit={handlesubmit} className='new-board-form'>
+            <div className={`form-fields ${showFields ? '' : 'hidden'}`}>
+                <div className='form-group'>
+                    <label htmlFor='board-title' className='form-label'>Title:</label>
+                    <input 
+                        id='board-title'
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        className='form-input'
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label htmlFor='board-owner' className='form-label'>Owner Name:</label>
+                    <input 
+                        id='board-owner'
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        className='form-input'
+                    />
+                </div>
+
+                <button type='submit' className='submit-button'>Submit</button>
+
+            </div>
+            <button 
+                type='button' 
+                className='toggle-button' 
+                onClick={toggleFields}> {showFields ? 'Hide Form' : 'Show Form'} 
+            </button>
+        </form>
     )
 }
+
+NewBoardForm.propTypes = {
+    onAddBoard: PropTypes.func.isRequired,
+};
 
 export default NewBoardForm;

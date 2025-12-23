@@ -1,17 +1,20 @@
 import Board from './Board';
 import PropTypes from 'prop-types';
+import './Boards.css'
 
-const BoardList = ({ boards, selectedBoard, onSelectBoard }) =>{
+const BoardList = ({ boards, selectedBoard, onSelectBoard, onDeleteBoard }) =>{
     return (
-        <ol>
+        <ul className='board-list'>
             {boards.map(board => (
                 <Board 
                     key={board.id}
                     board={board}
                     isSelected={selectedBoard?.id === board.id}
-                    onSelect={onSelectBoard}/>
+                    onSelect={onSelectBoard}
+                    onDelete={onDeleteBoard}
+                    />
             ))}
-        </ol>
+        </ul>
     );
 };
 
@@ -43,6 +46,7 @@ BoardList.propTypes = {
         ),
     }),
     onSelectBoard: PropTypes.func.isRequired,
+    onDeleteBoard: PropTypes.func.isRequired,
 };
 
 

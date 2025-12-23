@@ -6,11 +6,15 @@ const NewBoardForm = ({ onAddBoard }) =>{
     const [ title, setTitle ] = useState('');
     const [name, setName] = useState('');
     const [showFields, setShowFields] = useState(true);
+    const [error, setError] = useState('');
 
     const handlesubmit = (e) => {
         e.preventDefault();
 
-        if (!title.trim() || !name.trim()) return;
+        if (!title.trim() || !name.trim()) {
+            setError("Title and owner name are required");
+            return;
+        }
 
         const newBoard = {
             id: Date.now(),
@@ -22,12 +26,16 @@ const NewBoardForm = ({ onAddBoard }) =>{
         onAddBoard(newBoard);
         setTitle('');
         setName('');
+        setError('');
     };
 
     const toggleFields = () => setShowFields(prev => !prev);
 
     return (
         <form onSubmit={handlesubmit} className='new-board-form'>
+
+            <div className='error-message'>{error || '\u00A0'}</div>
+
             <div className={`form-fields ${showFields ? '' : 'hidden'}`}>
                 <div className='form-group'>
                     <label htmlFor='board-title' className='form-label'>Title:</label>

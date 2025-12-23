@@ -40,8 +40,8 @@
 
 .new-board-form {
     max-width: 400px;
-    margin: 1rem auto;
-    padding: 1rem;
+    margin: 0 auto;
+    padding: 0.5rem;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,7 @@
 
 .form-title {
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .form-fields.hidden {
@@ -89,10 +89,18 @@ button {
 
 .submit-button {
     background-color: #4caf50;
-    margin: 0.4rem 0;
+    margin: 0.6rem 0;
 }
 
 .toggle-button {
     background-color: #fc0404;
-    margin: 0.4rem 0;
+    margin: 0.5rem 0;
+}
+
+.error-message {
+    color: #fc0404;
+    font-size: 0.9rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    min-height: 1.2em;
 }

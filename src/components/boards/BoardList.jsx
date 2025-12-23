@@ -4,7 +4,7 @@ import './Boards.css'
 
 const BoardList = ({ boards, selectedBoard, onSelectBoard, onDeleteBoard }) =>{
     return (
-        <ol>
+        <ul className='board-list'>
             {boards.map(board => (
                 <Board 
                     key={board.id}
@@ -14,7 +14,7 @@ const BoardList = ({ boards, selectedBoard, onSelectBoard, onDeleteBoard }) =>{
                     onDelete={onDeleteBoard}
                     />
             ))}
-        </ol>
+        </ul>
     );
 };
 

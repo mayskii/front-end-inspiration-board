@@ -6,8 +6,10 @@ const Board = ({ board, isSelected, onSelect, onDelete }) =>{
         <li className={`board-item ${isSelected ? 'selected' : ''}`}
             onClick={() => onSelect(board)}
         >
-            <h3>{board.title}</h3>
-            <p>{board.name}</p>
+            <div className="board-item-content">
+                <h3 className="board-title">{board.title}</h3>
+                <p className="board-owner">{board.name}</p>
+            </div>
             
             <button 
                 onClick={(e) => { 

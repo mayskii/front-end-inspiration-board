@@ -32,11 +32,12 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>Inspiration Board</h1>
+    <div className="app-container">
+      <h1 className='title'>Inspiration Board</h1>
+      <div className='top-section'>
 
-      <div className='boards-container'>
         <section className='board-list-wrapper'>
+          <h2 className='boards-title'>Boards</h2>
           <BoardList 
           boards={boards}
           selectedBoard={selectedBoard}
@@ -45,24 +46,30 @@ function App() {
           />
         </section>
 
-        <section className='selected-board-wrapper'>
+        <section className="selected-board-wrapper">
+          <h2 className='selected-boards-title'>Selected Board</h2>
           {selectedBoard && (
-            <section>
+            <div className="board-details">
               <h2>{selectedBoard.title}</h2>
               <p>Owner: {selectedBoard.name}</p>
-
-              {/* Card block */}
-              <CardList cards={selectedBoard.cards} />
-              <NewCardForm board={selectedBoard} />
-            </section>
+            </div>
           )}
         </section>
+
+        <section className='new-board-wrapper'>
+          <h2 className='form-title'>Create a new board</h2>
+          <NewBoardForm 
+            onAddBoard={addBoard}
+          />
+        </section>
       </div>
-
-
-      <NewBoardForm 
-        onAddBoard={addBoard}
-      />
+      
+        {selectedBoard && (
+          <section className="cards-section">
+            <CardList cards={selectedBoard.cards} />
+            <NewCardForm board={selectedBoard} />
+          </section>
+        )}
     </div>
   )
 }

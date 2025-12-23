@@ -29,3 +29,7 @@
   border: 2px solid rgb(249, 2, 2);
   font-weight: bold;
 }
+
+.form-fields.hidden {
+  display: none;
+}

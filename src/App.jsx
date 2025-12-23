@@ -60,7 +60,9 @@ function App() {
       </div>
 
 
-      <NewBoardForm onAddBoard={addBoard}/>
+      <NewBoardForm 
+        onAddBoard={addBoard}
+      />
     </div>
   )
 }

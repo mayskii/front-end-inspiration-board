@@ -17,10 +17,8 @@ const NewBoardForm = ({ onAddBoard }) =>{
         }
 
         const newBoard = {
-            id: Date.now(),
             title,
             name,
-            cards: [],
         };
 
         onAddBoard(newBoard);

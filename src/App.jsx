@@ -9,13 +9,6 @@ import './App.css'
 // Board   -  { id, title, name, cards }
 // Card   -  { id, message, likes, board }
 
-// const BOARDS = [
-//   { id: 1, title: 'Travel', name: 'Maya', cards: [] },
-//   { id: 2, title: 'Ideas', name: 'Mumina', cards: [] },
-//   { id: 3, title: 'Cooking', name: 'Wenxin', cards: [] },
-//   { id: 4, title: 'Sport', name: 'Hsiang-ting', cards: [] },
-// ];
-
 const kbaseURL = 'http://localhost:5000';
 
 const getAllBoardsAPI = () => {
@@ -24,11 +17,11 @@ const getAllBoardsAPI = () => {
     .catch(error => console.log(error));
 };
 
-const getBoardByIdAPI = (id) => {
-  return axios.get(`${kbaseURL}/boards/${id}`)
-    .then(response => response.data)
-    .catch(error => console.log(error));
-};
+// const getBoardByIdAPI = (id) => {
+//   return axios.get(`${kbaseURL}/boards/${id}`)
+//     .then(response => response.data)
+//     .catch(error => console.log(error));
+// };
 
 const addBoardByAPI = (newBoard) => {
   return axios.post(`${kbaseURL}/boards`, newBoard)
@@ -49,9 +42,9 @@ function App() {
     getAllBoardsAPI().then(data => setBoards(data));
   }, []);
 
-  const handleSelectBoard = (board) => {
-    getBoardByIdAPI(board.id).then(data => setSelectedBoard(data));
-  }
+  // const handleSelectBoard = (board) => {
+  //   getBoardByIdAPI(board.id).then(data => setSelectedBoard(data));
+  // }
 
   const addBoard = (newBoard) => {
     addBoardByAPI(newBoard).then(response => {
@@ -78,7 +71,7 @@ function App() {
           <BoardList 
           boards={boards}
           selectedBoard={selectedBoard}
-          onSelectBoard={handleSelectBoard}
+          // onSelectBoard={handleSelectBoard}
           onDeleteBoard={deleteBoard}
           />
         </section>

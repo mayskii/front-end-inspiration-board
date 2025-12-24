@@ -17,11 +17,11 @@ const getAllBoardsAPI = () => {
     .catch(error => console.log(error));
 };
 
-// const getBoardByIdAPI = (id) => {
-//   return axios.get(`${kbaseURL}/boards/${id}`)
-//     .then(response => response.data)
-//     .catch(error => console.log(error));
-// };
+const getBoardByIdAPI = (id) => {
+  return axios.get(`${kbaseURL}/boards/${id}`)
+    .then(response => response.data)
+    .catch(error => console.log(error));
+};
 
 const addBoardByAPI = (newBoard) => {
   return axios.post(`${kbaseURL}/boards`, newBoard)
@@ -42,9 +42,9 @@ function App() {
     getAllBoardsAPI().then(data => setBoards(data));
   }, []);
 
-  // const handleSelectBoard = (board) => {
-  //   getBoardByIdAPI(board.id).then(data => setSelectedBoard(data));
-  // }
+  const handleSelectBoard = (board) => {
+    getBoardByIdAPI(board.id).then(data => setSelectedBoard(data));
+  }
 
   const addBoard = (newBoard) => {
     addBoardByAPI(newBoard).then(response => {
@@ -71,7 +71,7 @@ function App() {
           <BoardList 
           boards={boards}
           selectedBoard={selectedBoard}
-          // onSelectBoard={handleSelectBoard}
+          onSelectBoard={handleSelectBoard}
           onDeleteBoard={deleteBoard}
           />
         </section>

@@ -4,7 +4,7 @@ import CardList from './components/cards/CardList';
 import NewCardForm from './components/cards/NewCardForm';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css'
+import './App.css';
 
 // Board   -  { id, title, name, cards }
 // Card   -  { id, message, likes, board }
@@ -33,6 +33,21 @@ const deleteBoardAPI = id => {
     .catch(error => console.log(error));
 };
 
+const addCardByAPI = (boardId, newCard) => {
+  return axios.post(`${kbaseURL}/boards/${boardId}/cards`, newCard)
+    .catch(error => console.log(error));
+};
+
+const deleteCardAPI = (boardId, cardId) => {
+  return axios.delete(`${kbaseURL}/boards/${boardId}/cards/${cardId}`)
+    .catch(error => console.log(error));
+}
+
+const likeCardAPI = (boardId, cardId) => {
+  return axios.patch(`${kbaseURL}/boards/${boardId}/cards/${cardId}/like`)
+    .catch(error => console.log(error));
+}
+
 
 function App() {
   const [boards, setBoards] = useState([]);
@@ -43,21 +58,50 @@ function App() {
   }, []);
 
   const handleSelectBoard = (board) => {
-    getBoardByIdAPI(board.id).then(data => setSelectedBoard(data));
+    getBoardByIdAPI(board.id).then(data => {
+      const boardData = data?.board ?? data;
+      if (boardData) setSelectedBoard(boardData);
+    });
   }
 
   const addBoard = (newBoard) => {
     addBoardByAPI(newBoard).then(response => {
-      if(response && response.data) {
-        setBoards(prev => [...prev, newBoard]);
-      }
-    })   
+      const createdBoard = response?.data?.board ?? response?.data;
+        if (createdBoard) {
+          const boardWithCards = { ...createdBoard, cards: createdBoard.cards ?? [] };
+          setBoards(prev => [...prev, boardWithCards]);
+          setSelectedBoard(boardWithCards);
+        }
+    });
   }
 
   const deleteBoard = (boardId) => {
     deleteBoardAPI(boardId).then(() => {
       setBoards(prev => prev.filter(board => board.id !== boardId));
       if(selectedBoard?.id === boardId) setSelectedBoard(null);
+    });
+  }
+
+  const addCard = (boardId, newCard) => {
+    addCardByAPI(boardId, newCard).then(response => {
+      if(response && response.data) {
+        handleSelectBoard({ id: boardId });
+      }});
+    }
+
+  const deleteCard = (cardId) => {
+    deleteCardAPI(selectedBoard.id, cardId).then(() => {
+      if(selectedBoard) {
+        handleSelectBoard({ id: selectedBoard.id });
+      }
+    });
+  }
+
+  const likeCard = (cardId) => {
+    likeCardAPI(selectedBoard.id, cardId).then(() => {
+      if(selectedBoard) {
+        handleSelectBoard({ id: selectedBoard.id });
+      }
     });
   }
 
@@ -96,8 +140,23 @@ function App() {
       
         {selectedBoard && (
           <section className="cards-section">
-            <CardList cards={selectedBoard.cards} />
-            <NewCardForm board={selectedBoard} />
+            <section className='cards-list-wrapper'>
+              <CardList 
+                cards={selectedBoard.cards}
+                boardTitle={selectedBoard.title}
+                onDeleteCard={deleteCard}
+                onLikeCard={likeCard}
+              />
+            </section>
+
+            <section className='new-card-wrapper'>
+              <h2>Create a new card</h2>
+              <NewCardForm 
+                board={selectedBoard}
+                onAddCard={addCard} 
+              />
+            </section>
+            
           </section>
         )}
     </div>

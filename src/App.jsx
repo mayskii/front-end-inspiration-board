@@ -9,7 +9,7 @@ import './App.css';
 // Board   -  { id, title, name, cards }
 // Card   -  { id, message, likes, board }
 
-const kbaseURL = 'http://localhost:5000';
+const kbaseURL = 'https://back-end-inspiration-board-ijaa.onrender.com';
 
 const getAllBoardsAPI = () => {
   return axios.get(`${kbaseURL}/boards`)

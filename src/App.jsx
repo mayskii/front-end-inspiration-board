@@ -52,10 +52,16 @@ const likeCardAPI = (boardId, cardId) => {
 function App() {
   const [boards, setBoards] = useState([]);
   const [selectedBoard, setSelectedBoard] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     getAllBoardsAPI().then(data => setBoards(data));
   }, []);
+
+  const filteredBoards = boards.filter(board =>
+    board.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    board.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const handleSelectBoard = (board) => {
     getBoardByIdAPI(board.id).then(data => {
@@ -112,8 +118,17 @@ function App() {
 
         <section className='board-list-wrapper'>
           <h2 className='boards-title'>Boards</h2>
+
+          <input 
+            type="text"
+            placeholder="Search boards by title or owner..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="board-search-input"
+          />
+          
           <BoardList 
-          boards={boards}
+          boards={filteredBoards}
           selectedBoard={selectedBoard}
           onSelectBoard={handleSelectBoard}
           onDeleteBoard={deleteBoard}

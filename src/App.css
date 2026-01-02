@@ -60,3 +60,13 @@
   border-top: 1px solid #ddd;
   padding-top: 1rem;
 }
+
+.board-search-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}

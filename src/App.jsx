@@ -114,92 +114,99 @@ function App() {
   return (
     <div className="app-container">
       <h1 className='title'>Inspiration Board</h1>
-      <div className='top-section'>
+      <div className='columns-wrapper'>
 
-        <section className='board-list-wrapper'>
-          <h2 className='boards-title'>Boards</h2>
+        <div className='top-section'>
 
-          <input 
-            type="text"
-            placeholder="Search boards by title or owner..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="board-search-input"
-          />
-          
-          <BoardList 
-          boards={filteredBoards}
-          selectedBoard={selectedBoard}
-          onSelectBoard={handleSelectBoard}
-          onDeleteBoard={deleteBoard}
-          />
-        </section>
+          <section className='board-list-wrapper'>
+            <h2 className='boards-title'>Boards</h2>
 
-        <section className="selected-board-wrapper">
-          <h2 className='selected-boards-title'>Selected Board</h2>
-          {selectedBoard && (
-            <div className="board-details">
-              <h2>{selectedBoard.title}</h2>
-              <p>Owner: {selectedBoard.name}</p>
-            </div>
-          )}
-        </section>
+            <input 
+              type="text"
+              placeholder="Search boards by title or owner..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="board-search-input"
+            />
+            
+            <BoardList 
+            boards={filteredBoards}
+            selectedBoard={selectedBoard}
+            onSelectBoard={handleSelectBoard}
+            onDeleteBoard={deleteBoard}
+            />
+          </section>
 
-        <section className='new-board-wrapper'>
-          <h2 className='form-title'>Create a new board</h2>
-          <NewBoardForm 
-            onAddBoard={addBoard}
-          />
-        </section>
-      </div>
-      <section className='cards-list-wrapper'>
-        {selectedBoard ? (
-          <section className="cards-section">
-            {selectedBoard.cards && selectedBoard.cards.length > 0 ? (
-              <section className=''>
-                <CardList 
-                  cards={selectedBoard.cards}
-                  boardTitle={selectedBoard.title}
-                  boardOwner={selectedBoard.name}
-                  onDeleteCard={deleteCard}
-                  onLikeCard={likeCard}
-                />
+          <section className="selected-board-wrapper">
+            <h2 className='selected-boards-title'>Selected Board</h2>
+            {selectedBoard && (
+              <div className="board-details">
+                <h2>{selectedBoard.title}</h2>
+                <p>Owner: {selectedBoard.name}</p>
+              </div>
+            )}
+          </section>
+
+          <section className='new-board-wrapper'>
+            <h2 className='form-title'>Create a new board</h2>
+            <NewBoardForm 
+              onAddBoard={addBoard}
+            />
+          </section>
+        </div>
+
+        <div className='main-content'>
+          <section className='cards-list-wrapper'>
+            {selectedBoard ? (
+              <section className="cards-section">
+                {selectedBoard.cards && selectedBoard.cards.length > 0 ? (
+                  <section className=''>
+                    <CardList 
+                      cards={selectedBoard.cards}
+                      boardTitle={selectedBoard.title}
+                      boardOwner={selectedBoard.name}
+                      onDeleteCard={deleteCard}
+                      onLikeCard={likeCard}
+                    />
+                  </section>
+                ) : (
+                  <>
+                  <div className="cards-header-section">
+                    <div className='left-side'>
+                      <h3 className="card-board-title">{selectedBoard.title}</h3>
+                      <p className="owner-name">By {selectedBoard.name.charAt(0).toUpperCase() + selectedBoard.name.slice(1)}</p>
+                      <div className="card-stats">0 cards 0 likes</div>
+                    </div>
+                    <button className="right-side submit-button create-card-button"><span>+</span>Create New Card</button>
+                  </div>
+                  <div className="divide-line"></div>
+                  <div className="no-cards">
+                    <p className='no-cards-message'>No cards yet</p>
+                    <p className='no-cards-submessage'>Start adding inspiration to your board</p>
+                    <button className='add-button'>Add your first card</button>
+                  </div>
+                  </>
+                )}
+                <section className='new-card-wrapper'>
+                  <h2>Create a new card</h2>
+                  
+                  <NewCardForm 
+                    board={selectedBoard}
+                    onAddCard={addCard} 
+                  />
+                </section>
+                
               </section>
             ) : (
-              <>
-              <div className="cards-header-section">
-                <div className='left-side'>
-                  <h3 className="card-board-title">{selectedBoard.title}</h3>
-                  <p className="owner-name">By {selectedBoard.name.charAt(0).toUpperCase() + selectedBoard.name.slice(1)}</p>
-                  <div className="card-stats">0 cards 0 likes</div>
-                </div>
-                <button className="right-side submit-button create-card-button"><span>+</span>Create New Card</button>
+              <div className="no-board-selected">
+                <div className='sparkle-emoji'>✨</div>
+                <p className='no-board-message'>Select a board</p>
+                <p className='no-board-submessage'>Choose a board from the sidebar or create a new one</p>
               </div>
-              <div className="divide-line"></div>
-              <div className="no-cards">
-                <p className='no-cards-message'>No cards yet</p>
-                <p className='no-cards-submessage'>Start adding inspiration to your board</p>
-                <button className='add-button'>Add your first card</button>
-              </div>
-              </>
-            )}
-            {/* <section className='new-card-wrapper'>
-              <h2>Create a new card</h2>
-              
-              <NewCardForm 
-                board={selectedBoard}
-                onAddCard={addCard} 
-              />
-            </section> */}
-            
-          </section>
-        ) : (
-          <div className="no-board-selected">
-            <div className='sparkle-emoji'>✨</div>
-            <p className='no-board-message'>Select a board</p>
-            <p className='no-board-submessage'>Choose a board from the sidebar or create a new one</p>
-          </div>
-        )} </section>
+            )} </section>
+        </div>
+      </div>
+      
     </div>
   )
 }

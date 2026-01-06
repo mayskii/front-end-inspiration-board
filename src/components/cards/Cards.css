@@ -102,7 +102,7 @@ button span {
     border-radius: 1rem;
 }
 
-/* .note {
+.note {
     color: #333;
     position: relative;
     width: 100%;
@@ -113,18 +113,18 @@ button span {
     font-size: clamp(14px, 2.5vw, 16px);
     box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
     box-sizing: border-box;
-} */
+}
 
-/* .note h2 {
+.note h2 {
     display: block;
     margin: 40px 0 0 0;
     text-align: right;
-} */
+}
 
-/* .card-likes {
+.card-likes {
     font-size: 1rem;
     margin-top: 0px;
-} */
+}
 
 /* .yellow {
     background: #eae672;
@@ -136,7 +136,7 @@ button span {
 } */
 
 /* pin body */
-/* .pin {
+.pin {
     background-color: #aaa;
     display: block;
     height: 32px;
@@ -145,10 +145,10 @@ button span {
     left: 50%;
     top: -16px;
     z-index: 1;
-} */
+}
 
 /* pin head */
-/* .pin:after {
+.pin:after {
     background-color: #A31;
     background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
     border-radius: 50%;
@@ -159,10 +159,10 @@ button span {
     position: absolute;
     top: -10px;
     width: 12px;
-} */
+}
 
 /* pin shadow */
-/* .pin:before {
+.pin:before {
     background-color: hsla(0,0%,0%,0.1);
     box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
     content: ''; 
@@ -184,9 +184,9 @@ button span {
     -webkit-transform-origin: 50% 100%;
     -ms-transform-origin: 50% 100%;
     -o-transform-origin: 50% 100%;
-} */
+}
 
-/* @media (max-width: 640px) {
+@media (max-width: 640px) {
     .card-container {
         margin-top: 32px;
     }
@@ -198,4 +198,4 @@ button span {
     .card-message {
         font-size: clamp(1.1rem, 5vw, 1.35rem);
     }
-} */
+}

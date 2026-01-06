@@ -1,9 +1,201 @@
+.card-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: start;
+}
+
 .card-message {
     margin: 0;
     font-size: 1rem;
 }
 
-.submit-button {
-    background-color: #4caf50;
-    margin: 0.6rem 0;
+.card-board-title {
+    margin-bottom: 1rem;
+    font-size: 1.7rem;
 }
+
+.owner-name, .card-stats {
+    color: #B2A285;
+    font-weight: 400;
+}
+
+.owner-name {
+    margin-top: -0.5rem;
+}
+
+.card-stats {
+    margin-top: -1.0rem;
+    font-size: 0.7rem;
+}
+
+.divide-line {
+    border-bottom: 1px solid #E8E3DC;
+    margin: 0.5rem 0 1rem 0;
+}
+
+.no-cards, .no-board-selected {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin: 0;
+}
+
+.no-cards-submessage, .no-board-submessage {
+    color: #B29D75;
+    margin: 0 0 .7rem;
+}
+
+.no-cards-message, .no-board-message {
+    margin: 0 0 .5rem;
+}
+
+.add-button {
+    background-color: #F1F1F1;
+    color: black;
+    max-width: 220px;
+    padding: .9rem;
+    border-radius: 1rem;
+    border: solid 2px #E8E3DC;
+}
+
+.sparkle-emoji {
+    font-size: 4rem;
+}
+
+.add-button:hover {
+    background-color: #20C1A1;
+    border: solid 2px #E8E3DC;
+    cursor: pointer;
+    color: white;
+}
+
+.create-card-button {
+    max-width: 240px;
+    height: 60px;
+    margin: 0;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    font-weight: 300;
+}
+
+.cards-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+}
+
+button span {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+}
+
+.cards-list-wrapper {
+    background-color: white;
+    width: auto;
+    height: auto;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+
+/* .note {
+    color: #333;
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+    padding: clamp(14px, 3vw, 22px);
+    font-family: Satisfy;
+    font-size: clamp(14px, 2.5vw, 16px);
+    box-shadow: 0 10px 10px 2px rgba(0,0,0,0.3);
+    box-sizing: border-box;
+} */
+
+/* .note h2 {
+    display: block;
+    margin: 40px 0 0 0;
+    text-align: right;
+} */
+
+/* .card-likes {
+    font-size: 1rem;
+    margin-top: 0px;
+} */
+
+/* .yellow {
+    background: #eae672;
+    /* -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg); */
+    /* transform: rotate(2deg);
+} */
+
+/* pin body */
+/* .pin {
+    background-color: #aaa;
+    display: block;
+    height: 32px;
+    width: 2px;
+    position: absolute;
+    left: 50%;
+    top: -16px;
+    z-index: 1;
+} */
+
+/* pin head */
+/* .pin:after {
+    background-color: #A31;
+    background-image: radial-gradient(25% 25%, circle, hsla(0,0%,100%,.3), hsla(0,0%,0%,.3));
+    border-radius: 50%;
+    box-shadow: inset 0 0 0 1px hsla(0,0%,0%,.1), inset 3px 3px 3px hsla(0,0%,100%,.2), inset -3px -3px 3px hsla(0,0%,0%,.2), 23px 20px 3px hsla(0,0%,0%,.15);
+    content: '';
+    height: 12px;
+    left: -5px;
+    position: absolute;
+    top: -10px;
+    width: 12px;
+} */
+
+/* pin shadow */
+/* .pin:before {
+    background-color: hsla(0,0%,0%,0.1);
+    box-shadow: 0 0 .25em hsla(0,0%,0%,.1);
+    content: ''; 
+
+    height: 24px;
+    width: 2px;
+    left: 0;
+    position: absolute;
+    top: 8px;
+    
+    transform: rotate(57.5deg);
+    -moz-transform: rotate(57.5deg);
+    -webkit-transform: rotate(57.5deg);
+    -o-transform: rotate(57.5deg);
+    -ms-transform: rotate(57.5deg);
+    
+    transform-origin: 50% 100%;
+    -moz-transform-origin: 50% 100%;
+    -webkit-transform-origin: 50% 100%;
+    -ms-transform-origin: 50% 100%;
+    -o-transform-origin: 50% 100%;
+} */
+
+/* @media (max-width: 640px) {
+    .card-container {
+        margin-top: 32px;
+    }
+
+    .card-list {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .card-message {
+        font-size: clamp(1.1rem, 5vw, 1.35rem);
+    }
+} */

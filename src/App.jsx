@@ -152,28 +152,54 @@ function App() {
           />
         </section>
       </div>
-      
-        {selectedBoard && (
+      <section className='cards-list-wrapper'>
+        {selectedBoard ? (
           <section className="cards-section">
-            <section className='cards-list-wrapper'>
-              <CardList 
-                cards={selectedBoard.cards}
-                boardTitle={selectedBoard.title}
-                onDeleteCard={deleteCard}
-                onLikeCard={likeCard}
-              />
-            </section>
-
-            <section className='new-card-wrapper'>
+            {selectedBoard.cards && selectedBoard.cards.length > 0 ? (
+              <section className=''>
+                <CardList 
+                  cards={selectedBoard.cards}
+                  boardTitle={selectedBoard.title}
+                  boardOwner={selectedBoard.name}
+                  onDeleteCard={deleteCard}
+                  onLikeCard={likeCard}
+                />
+              </section>
+            ) : (
+              <>
+              <div className="cards-header-section">
+                <div className='left-side'>
+                  <h3 className="card-board-title">{selectedBoard.title}</h3>
+                  <p className="owner-name">By {selectedBoard.name.charAt(0).toUpperCase() + selectedBoard.name.slice(1)}</p>
+                  <div className="card-stats">0 cards 0 likes</div>
+                </div>
+                <button className="right-side submit-button create-card-button"><span>+</span>Create New Card</button>
+              </div>
+              <div className="divide-line"></div>
+              <div className="no-cards">
+                <p className='no-cards-message'>No cards yet</p>
+                <p className='no-cards-submessage'>Start adding inspiration to your board</p>
+                <button className='add-button'>Add your first card</button>
+              </div>
+              </>
+            )}
+            {/* <section className='new-card-wrapper'>
               <h2>Create a new card</h2>
+              
               <NewCardForm 
                 board={selectedBoard}
                 onAddCard={addCard} 
               />
-            </section>
+            </section> */}
             
           </section>
-        )}
+        ) : (
+          <div className="no-board-selected">
+            <div className='sparkle-emoji'>✨</div>
+            <p className='no-board-message'>Select a board</p>
+            <p className='no-board-submessage'>Choose a board from the sidebar or create a new one</p>
+          </div>
+        )} </section>
     </div>
   )
 }

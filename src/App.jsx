@@ -183,14 +183,14 @@ function App() {
               </div>
               </>
             )}
-            {/* <section className='new-card-wrapper'>
+            <section className='new-card-wrapper'>
               <h2>Create a new card</h2>
               
               <NewCardForm 
                 board={selectedBoard}
                 onAddCard={addCard} 
               />
-            </section> */}
+            </section>
             
           </section>
         ) : (

@@ -113,22 +113,26 @@ function App() {
 
   return (
     <div className="app-container">
-      <h1 className='title'>Inspiration Board</h1>
+      <h1 className="title">
+        <span className="sparkle-emoji">✨</span>
+        Inspiration Board
+      </h1>
       <div className='columns-wrapper'>
 
         <div className='top-section'>
 
-          <section className='board-list-wrapper'>
-            <h2 className='boards-title'>Boards</h2>
-
+          <section className='search-board-section'>
             <input 
+              className='board-search-input'
               type="text"
-              placeholder="Search boards by title or owner..."
+              placeholder=" 🔍  Search boards by title or owner..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="board-search-input"
             />
-            
+          </section>
+
+          <section className='board-list-wrapper'>
+            <h2 className='boards-title'>Boards</h2>
             <BoardList 
             boards={filteredBoards}
             selectedBoard={selectedBoard}
@@ -148,7 +152,7 @@ function App() {
           </section>
 
           <section className='new-board-wrapper'>
-            <h2 className='form-title'>Create a new board</h2>
+            <h2 className='form-title'><span className='plus-sign'>+</span>New board</h2>
             <NewBoardForm 
               onAddBoard={addBoard}
             />

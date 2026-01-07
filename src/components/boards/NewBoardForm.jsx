@@ -32,10 +32,12 @@ const NewBoardForm = ({ onAddBoard }) =>{
     return (
         <form onSubmit={handlesubmit} className='new-board-form'>
 
-            <div className='error-message'>{error || '\u00A0'}</div>
-
             <div className={`form-fields ${showFields ? '' : 'hidden'}`}>
-                <div className='form-group'>
+                <div className="form-fields-inner">
+
+                    <div className='error-message'>{error || '\u00A0'}</div>
+
+                    <div className='form-group'>
                     <label htmlFor='board-title' className='form-label'>Title:</label>
                     <input 
                         id='board-title'
@@ -43,9 +45,9 @@ const NewBoardForm = ({ onAddBoard }) =>{
                         onChange={(e) => setTitle(e.target.value)}
                         className='form-input'
                     />
-                </div>
+                    </div>
 
-                <div className='form-group'>
+                    <div className='form-group'>
                     <label htmlFor='board-owner' className='form-label'>Owner Name:</label>
                     <input 
                         id='board-owner'
@@ -53,15 +55,22 @@ const NewBoardForm = ({ onAddBoard }) =>{
                         onChange={(e) => setName(e.target.value)}
                         className='form-input'
                     />
+                    </div>
+
+                    <button type='submit' className='submit-button'>
+                    Create Board
+                    </button>
+
                 </div>
-
-                <button type='submit' className='submit-button'>Submit</button>
-
             </div>
-            <button 
-                type='button' 
-                className='toggle-button' 
-                onClick={toggleFields}> {showFields ? 'Hide Form' : 'Show Form'} 
+
+            <button
+                type="button"
+                className="collapse-toggle"
+                onClick={toggleFields}
+                aria-label="Toggle form"
+            >
+                <i className={`fa-solid ${showFields ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
             </button>
         </form>
     )

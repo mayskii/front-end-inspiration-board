@@ -44,6 +44,7 @@ const NewBoardForm = ({ onAddBoard }) =>{
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                         className='form-input'
+                        placeholder='My inspiration board...'
                     />
                     </div>
 
@@ -54,6 +55,7 @@ const NewBoardForm = ({ onAddBoard }) =>{
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className='form-input'
+                        placeholder='Your name...'
                     />
                     </div>
 

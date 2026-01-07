@@ -96,15 +96,6 @@ h1, h2, h3, h4, h5, h6, p {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* .cards-section {
-  margin-top: 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
-} */
-
 .search-board-section{
   width: 100%;
   box-sizing: border-box;
@@ -112,9 +103,25 @@ h1, h2, h3, h4, h5, h6, p {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* Search section + icon */
+.search-board-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  color: #B29D75;
+  font-size: 1rem;
+  pointer-events: none;
+}
+
 .board-search-input {
   width: 100%;
-  padding: 1.1rem;
+  padding: 0.9rem 0.75rem;
+  padding-left: 3rem;
   font-size: 1.2rem;
   border-radius: 1rem;
   box-sizing: border-box;

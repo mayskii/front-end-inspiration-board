@@ -8,7 +8,7 @@ const Board = ({ board, isSelected, onSelect, onDelete }) =>{
         >
             <div className="board-item-content">
                 <h3 className="board-title">{board.title}</h3>
-                <p className="board-owner">{board.name}</p>
+                <p className="board-owner">By {board.name.charAt(0).toUpperCase() + board.name.slice(1)}</p>
             </div>
             
             <button id='delete-button'

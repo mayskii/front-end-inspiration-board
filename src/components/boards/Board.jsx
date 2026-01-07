@@ -11,7 +11,7 @@ const Board = ({ board, isSelected, onSelect, onDelete }) =>{
                 <p className="board-owner">{board.name}</p>
             </div>
             
-            <button className='delete-button'
+            <button id='delete-button'
                 onClick={(e) => { 
                     e.stopPropagation();
                     onDelete(board.id);

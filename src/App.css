@@ -47,6 +47,7 @@ h1, h2, h3, h4, h5, h6, p {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* top title */
@@ -68,17 +69,22 @@ h1, h2, h3, h4, h5, h6, p {
 .board-list-wrapper {
   background-color: white;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1.4rem;
   width: 100%;
   box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .selected-board-wrapper {
   background-color: white;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 1rem 1.4rem;
   width: 100%;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .new-board-wrapper {
@@ -87,6 +93,7 @@ h1, h2, h3, h4, h5, h6, p {
   border-radius: 1rem;
   padding: 1rem;
   box-sizing: border-box;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 /* .cards-section {
@@ -101,6 +108,8 @@ h1, h2, h3, h4, h5, h6, p {
 .search-board-section{
   width: 100%;
   box-sizing: border-box;
+  border-radius: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .board-search-input {

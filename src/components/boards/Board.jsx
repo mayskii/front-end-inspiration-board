@@ -11,13 +11,13 @@ const Board = ({ board, isSelected, onSelect, onDelete }) =>{
                 <p className="board-owner">{board.name}</p>
             </div>
             
-            <button 
+            <button id='delete-button'
                 onClick={(e) => { 
                     e.stopPropagation();
                     onDelete(board.id);
                 }}
             > 
-            Delete
+            <i className="fa-regular fa-trash-can"></i>
             </button>
         </li>
     )

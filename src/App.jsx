@@ -200,7 +200,7 @@ function App() {
                         {selectedBoard.name.charAt(0).toUpperCase() +
                           selectedBoard.name.slice(1)}
                       </p>
-                      <div className="card-stats">0 cards 0 likes</div>
+                      <div className="card-stats">0 cards • 0 likes</div>
                     </div>
                     <button
                       className="right-side submit-button create-card-button"
